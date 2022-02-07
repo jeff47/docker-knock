@@ -16,9 +16,11 @@ https://hub.docker.com/repository/docker/jeffrice/docker-knock
 
 ## To-Do
 
-I am working on a better way for authentication, so that your credentials will be saved.  Personally, I do this myself by copying the xml files into the container at build time.  Naturally, that can't be distributed so I'm working on a self-contained alternative.
+I am working on a better way for authentication, so that your credentials will be saved.  Personally, I do this myself by copying the xml files into the container at build time.  
 This is accomplished by placing my auth files in a subdirectory (acsm/) of my build directory, and adding this line to the Dockerfile:
 
 ```COPY acsm/ /root/.config/knock/acsm```
+
+Naturally, that can't be distributed so I'm working on a self-contained alternative.
 
 The authentication files can be generated using [libgourou](https://indefero.soutade.fr/p/libgourou/), included in the container.  You can play with that and see if you come up with a better solution for preserving the authentication information.
