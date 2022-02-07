@@ -10,3 +10,4 @@ Dockerized version of knock, for downloading and converting Adobe Digital Editio
 2.)  You will need to run the container as interactive to enter your ADE credentials.
 ```docker run -it -v $(pwd):/home/knock --rm jeffrice/docker-knock File.acsm```
 
+I am working on a better way for authentication, so that your credentials will be saved.  Personally, I this myself by copying the xml files into the container at build time.  Naturally, that can't be distributed so I'm working on a self-contained alternative.
