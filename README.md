@@ -20,3 +20,5 @@ I am working on a better way for authentication, so that your credentials will b
 This is accomplished by placing my auth files in a subdirectory (acsm/) of my build directory, and adding this line to the Dockerfile:
 
 ```COPY acsm/ /root/.config/knock/acsm```
+
+The authentication files can be generated using [libgourou](https://indefero.soutade.fr/p/libgourou/), included in the container.  You can play with that and see if you come up with a better solution for preserving the authentication information.
