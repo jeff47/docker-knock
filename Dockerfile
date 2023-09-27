@@ -1,11 +1,11 @@
-FROM ubuntu
+FROM ubuntu:20.04
 
 ENV PYTHONPATH=/usr/local/lib/python3.8/local
 
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive TZ="America/New_York" \
   apt-get install -y \
-  python3 \
+  python3=3.8.2 \
   pip \
   bash \
   git \
@@ -25,33 +25,26 @@ RUN pip install click \
 
 WORKDIR /home/knock
 
-RUN cd /usr/src \ 
-  && git clone https://github.com/BentonEdmondson/knock \
-  && cp /usr/src/knock/src/knock.py /usr/local/bin \
-  && mkdir -p /usr/local/lib/python3.8/local \
-  && cp /usr/src/knock/lib/* /usr/local/lib/python3.8/local \
-  && rm -r /usr/src/knock/
+COPY ./knock/bin/knock.py /usr/local/bin
+RUN mkdir -p /usr/local/lib/python3.8/local
+COPY ./knock/lib/* /usr/local/lib/python3.8/local \
+  
 
-RUN cd /usr/src \
-  && git clone https://github.com/BentonEdmondson/rmdrm/ \
-  && cp /usr/src/rmdrm/rmdrm-* /usr/local/bin \
-  && chmod +x /usr/local/bin/rmdrm-* \
-  && rm -r /usr/src/rmdrm
+COPY ./rmdrm/* /usr/local/bin
+RUN chmod +x /usr/local/bin/rmdrm-*
 
-RUN cd /usr/src \
-  && git clone git://soutade.fr/libgourou.git \
-  && cd libgourou \
+COPY ./libgourou /usr/src/libgourou
+
+RUN cd /usr/src/libgourou \
   && make \
   && cp /usr/src/libgourou/libgourou.so         /usr/local/lib \
   && cp /usr/src/libgourou/utils/acsmdownloader /usr/local/bin \
   && cp /usr/src/libgourou/utils/adept_activate /usr/local/bin \
   && cp /usr/src/libgourou/utils/adept_remove   /usr/local/bin \
   && cd /home/knock \
-  && rm -r /usr/src/libgourou \
+  && rm -r /usr/src/libgourou
   && ldconfig
 
 COPY ./acsm /root/.config/knock/acsm
-
-#CMD for file in *.acsm; do knock "$(pwd)"/$file; done
 
 ENTRYPOINT ["knock.py"]
