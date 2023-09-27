@@ -1,0 +1,3 @@
+[submodule "libgourou"]
+	path = libgourou
+	url = git://soutade.fr/libgourou.git
