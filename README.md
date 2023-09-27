@@ -5,7 +5,7 @@ Dockerized version of knock, for downloading and converting Adobe Digital Editio
 
 
 ##  Knock
-[Knock](https://github.com/BentonEdmondson/knock) is a useful tool for downloading and converting eBooks from Adobe Editions.  Adobe Editions itself is not needed.  This is a dockerized version of knock, so you don't need to enable user namespaces which some may consider a security risk.
+Knock (Originally from BentonEdmondson/knock, but that repo is gone!) is a useful tool for downloading and converting eBooks from Adobe Editions.  Adobe Editions itself is not needed.  This is a dockerized version of knock, so you don't need to enable user namespaces which some may consider a security risk.
 
 ## Installation
 1.  You will need an acsm file (Adobe Digital Editions) file.
