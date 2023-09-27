@@ -1,7 +1,7 @@
 # docker-knock
 Dockerized version of knock, for downloading and converting Adobe Digital Editions ACSM to EPUB or PDF
 
-https://hub.docker.com/repository/docker/jeffrice/docker-knock
+[https://github.com/users/jeff47/packages/container/package/docker-knock](https://github.com/users/jeff47/packages/container/package/docker-knock)
 
 
 ##  Knock
